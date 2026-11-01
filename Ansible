@@ -1,0 +1,44 @@
+Ansible Installation
+
+	sudo nano /etc/hostname (3m)
+	sudo reboot(3m)
+        sudo apt update && sudo apt upgrade
+
+	sudo apt install ansible -y(3m)
+	sudo nano /etc/hosts         (on server -->IP of node1 & node2)
+	ssh-keygen                   (on server)--->copy .pub key
+	cat paste .pub key
+	
+	cd .ssh                      (on node1 & node2)
+	nano authorized_keys         (on node1 & node2--->paste above .pub key on node1 & node2)
+
+	ssh admin@node1 (on server)-->exit
+	ssh admin@node2 (on server)-->exit
+
+	mkdir pro
+	cd pro
+	nano inventory 
+	{[node]
+	 node1
+	 node2}
+	
+	nano pro.yml
+	{- name: install tree
+	   hosts: node (inventory file name)   	
+	   become: true
+
+	   tasks:
+	    - name: install tree
+	      ansible.builtin.apt:
+	        name: tree
+	        state: present}
+
+add user-->[- name: add user 'yash'
+	      ansible.builtin.user:
+	        name: yash          ]
+
+show user on clients(node) using--> sudo tail /etc/passwd
+
+
+
+	ansible-playbook -i inventory pro.yml
