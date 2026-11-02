@@ -1,0 +1,34 @@
+PORT--> 2377 with mini. 2 instances
+
+sudo apt update
+sudo apt install docker.io
+sudo usermod admin -aG docker
+newgrp docker
+
+mkdir astha
+cd astha
+nano dockerfile-->[ FROM ubuntu/apache2			or  FROM httpd/nginx
+		    COPY index.html /var/www/html
+		    EXPOSE 80 ]
+nano index.html -->hii shivanshu
+
+docker build -t shreyaspawar41/imagecreate
+docker images (--> shreyaspawar41/imagecreate)
+
+
+
+###Push image on dockerhub
+
+docker login
+USERNAME: shreyaspawar41
+PASSWORD: Passworddocker@2003
+
+docker push shreyaspawar41/imagecreate
+
+# docker swarm init ---> copy token and paste on each client
+
+  docker service create --name mycontainer -d -p 80:80 shreyaspawar41/imagecreate
+
+  docker service scale mycontainer=2
+
+  docker service ps mycontainer
