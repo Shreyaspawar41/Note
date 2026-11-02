@@ -12,7 +12,7 @@ nano dockerfile-->[ FROM ubuntu/apache2			or  FROM httpd/nginx
 		    EXPOSE 80 ]
 nano index.html -->hii shivanshu
 
-docker build -t shreyaspawar41/imagecreate
+docker build -t shreyaspawar41/imagecreate .
 docker images (--> shreyaspawar41/imagecreate)
 
 
