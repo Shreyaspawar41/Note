@@ -1,0 +1,27 @@
+sudo apt update
+sudo apt install git
+Create directory -> mkdir project
+                    cd project
+
+git init
+ssh-keygen 
+cat  path -->copy .pub key
+
+on github
+  Create repository on GitHub -> any name
+  paste .pub key  ---> GitHub ->Repository settings -> deploy key
+  code-> SSH -> copy file
+
+on putty 
+  git remote add origin "git@github.com:nasawebtech/project.git"    --->paste that GitHub SSH file 
+  git pull origin master/main
+
+configure
+  git config --global user.email "nasawebtech@gmail.com"
+  git config --global user.name "nasawebtech"
+
+  nano index.html 
+  git add .
+  git commit -m "First commit"
+
+  git push origin master/main
